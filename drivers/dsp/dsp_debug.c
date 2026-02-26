@@ -113,7 +113,7 @@ static int debug_dsp_dev_mmap(struct file *file, struct vm_area_struct *vma)
 			vma->vm_start,
 			vma->vm_pgoff,
 			vma->vm_end - vma->vm_start,
-			vma->vm_page_prot)) {
+			pgprot_noncached(vma->vm_page_prot))) {
 		DSP_ERR("sharespace mmap fail\n");
 		return -EAGAIN;
 	}
